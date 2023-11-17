@@ -1,0 +1,146 @@
+<style>
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .student-table th, .student-table td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    .student-table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .student-table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .action-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .action-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 6px 8px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+
+    .action-button:hover {
+        background-color: #45a049;
+    }
+
+    .update-form {
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .input-field {
+        width: calc(100% - 16px);
+        padding: 6px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    .save-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+    }
+
+    .save-button:hover {
+        background-color: #45a049;
+    }
+</style>
+<table class="student-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Dirección</th>
+            <th>Género</th>
+            <th>Estado</th>
+            <th>Teléfono</th>
+            <th>Grupo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of studentList">
+            <td>{{student.id}}</td>
+            <td>{{student.dni}}</td>
+            <td>{{student.firstName}}</td>
+            <td>{{student.lastName}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.address}}</td>
+            <td>{{student.gender}}</td>
+            <td>{{student.status}}</td>
+            <td>{{student.phone}}</td>
+            <td>{{student.cohort}}</td>
+            <td>
+                <button (click)="update(ver, student)" class="action-button">Actualizar</button>
+                <button (click)="delete(student.id)" class="action-button">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #ver let-modal>
+    <div class="update-form">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" [(ngModel)]="dni" class="input-field">
+        <br>
+
+        <label for="firstName">Nombre:</label>
+        <input type="text" id="firstName" [(ngModel)]="firstName" class="input-field">
+        <br>
+
+        <label for="lastName">Apellido:</label>
+        <input type="text" id="lastName" [(ngModel)]="lastName" class="input-field">
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" [(ngModel)]="email" class="input-field">
+        <br>
+
+        <button (click)="save()" class="action-button">Guardar</button>
+    </div>
+</ng-template>
+<div class="update-form">
+    <label for="dni">DNI:</label>
+    <input type="text" id="dni" [(ngModel)]="dni" class="input-field">
+    <br>
+
+    <label for="firstName">Nombre:</label>
+    <input type="text" id="firstName" [(ngModel)]="firstName" class="input-field">
+    <br>
+
+    <label for="lastName">Apellido:</label>
+    <input type="text" id="lastName" [(ngModel)]="lastName" class="input-field">
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" [(ngModel)]="email" class="input-field">
+    <br>
+
+    <button (click)="save()" class="action-button">Guardar</button>
+</div>
